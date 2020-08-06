@@ -1,6 +1,7 @@
 from django.urls import path
 from .views.mango_views import Mangos, MangoDetail
 from .views.user_views import SignUp, SignIn, SignOut, ChangePassword
+from .views.book_views import Books, BookDetail
 
 urlpatterns = [
 	# Restful routing
@@ -9,5 +10,7 @@ urlpatterns = [
     path('sign-up/', SignUp.as_view(), name='sign-up'),
     path('sign-in/', SignIn.as_view(), name='sign-in'),
     path('sign-out/', SignOut.as_view(), name='sign-out'),
-    path('change-pw/', ChangePassword.as_view(), name='change-pw')
+    path('change-pw/', ChangePassword.as_view(), name='change-pw'),
+    path('books/', Books.as_view(), name='books'),
+    path('books/<int:pk>/', BookDetail.as_view(), name='book_detail')
 ]

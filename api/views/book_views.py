@@ -11,7 +11,7 @@ from ..models.book import Book
 from ..serializers import BookSerializer, UserSerializer
 
 class Books(generics.ListCreateAPIView):
-    permission_classes=(isAuthenticated,)
+    permission_classes=(IsAuthenticated,)
     def get(self, request):
         """Index request"""
         # books = Book.objects.all()
@@ -40,5 +40,34 @@ class BookDetail(generics.RetrieveUpdateDestroyAPIView):
         data = BookSerializer(book).data
         if not request.user.id == data['owner']:
             raise PermissionDenied('Unauthorized, you do not own this book.')
+        return Response(data)
+
+    def delete(self, request, pk):
+        """Delete request"""
+        book = get_object_or_404(Book, pk=pk)
+        if not request.user.id == book.owner.id:
+            raise PermissionDenied('Unauthorized, you do not own this book')
         book.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def partial_update(self, request, pk):
+      """Update Request"""
+      # Remove owner from request object
+      if request.data['book'].get('owner', False):
+          del request.data['book']['owner']
+
+      # Locate Book
+      book = get_object_or_404(Book, pk=pk)
+      # Check if user is the same
+      if not request.user.id == book.owner.id:
+          raise PermissionDenied('Unauthorized, you do not own this book')
+
+      # Add owner to data object now that we know this user owns the book
+      request.data['book']['owner'] = request.user.id
+      # Validate updates with serializer
+      bs = BookSerializer(book, data=request.data['book'])
+      if bs.is_valid():
+          bs.save()
+          # print(bs)
+          return Response(bs.data)
+      return Response(bs.errors, status=status.HTTP_400_BAD_REQUEST)

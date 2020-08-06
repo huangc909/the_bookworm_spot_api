@@ -60,8 +60,15 @@ class MangoDetail(generics.RetrieveUpdateDestroyAPIView):
 
         # Locate Mango
         mango = get_object_or_404(Mango, pk=pk)
+        # data = MangoSerializer(mango).data
+        # 'data' is a dictionary returned from the serializer,
+        # which we could then use the commented code down below
         # Check if user is  the same
-        if not request.user.id == mango['owner']:
+        # This will not work without passing 'mango' to a serializer first:
+        # if not request.user.id == mango['owner']:
+        # The object we get back from 'get_object_or_404' is not a dictionary
+        # so we need to use dot notation
+        if not request.user.id == mango.owner.id:
             raise PermissionDenied('Unauthorized, you do not own this mango')
 
         # Add owner to data object now that we know this user owns the resource
