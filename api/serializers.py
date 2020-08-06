@@ -8,7 +8,7 @@ from .models.user import User
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        fields = ('id', 'title', 'author', 'note', 'onWishlist', 'onRead', 'owner')
+        fields = ('id', 'title', 'author', 'note', 'rating', 'onWishlist', 'onRead', 'owner')
 
 class MangoSerializer(serializers.ModelSerializer):
     class Meta:

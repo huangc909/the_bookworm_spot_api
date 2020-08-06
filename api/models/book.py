@@ -5,7 +5,8 @@ from .user import User
 class Book(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
-    note = models.CharField(max_length=300)
+    note = models.CharField(max_length=500)
+    rating = models.CharField(max_length=100)
     onWishlist = models.BooleanField()
     onRead = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -26,6 +27,7 @@ class Book(models.Model):
           'title': self.title,
           'author': self.author,
           'note': self.note,
+          'rating': self.rating,
           'onWishlist': self.onWishlist,
           'onRead': self.onRead
         }

@@ -10,6 +10,7 @@ curl "http://localhost:8000/books/${ID}/" \
       "title": "'"${TITLE}"'",
       "author": "'"${AUTHOR}"'",
       "note": "'"${NOTE}"'",
+      "rating": "'"${RATING}"'",
       "onWishlist": "'"${WL}"'",
       "onRead": "'"${READ}"'"
     }
