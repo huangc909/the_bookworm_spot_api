@@ -24,5 +24,6 @@ class Mango(models.Model):
         'id': self.id,
         'name': self.name,
         'ripe': self.ripe,
-        'color': self.color
+        'color': self.color,
+        'eaten': self.eaten
     }

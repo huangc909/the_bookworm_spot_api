@@ -1,13 +1,19 @@
 from django.db import models
 
+from .user import User
+
 class Book(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     note = models.CharField(max_length=300)
-    onWishlist = models.BooleanField(max_length=100)
-    onRead = models.BooleanField(max_length=100)
+    onWishlist = models.BooleanField()
+    onRead = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE
+    )
 
     # Returns a sensical string representation of the data
     def __str__(self):

@@ -1,9 +1,14 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
+from .models.book import Book
 from .models.mango import Mango
 from .models.user import User
 
+class BookSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Book
+        fields = ('title', 'author', 'note', 'onWishlist', 'onRead', 'owner')
 
 class MangoSerializer(serializers.ModelSerializer):
     class Meta:
