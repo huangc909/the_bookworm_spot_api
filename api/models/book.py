@@ -11,7 +11,7 @@ class Book(models.Model):
     rating = models.DecimalField(max_digits=2, decimal_places=1)
     onWishlist = models.BooleanField()
     onRead = models.BooleanField()
-    photo = models.ImageField(upload_to='books', default='books/default-Image.jpg')
+    photo = models.ImageField(upload_to='books', default='books/default_Image.jpg')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     owner = models.ForeignKey(
