@@ -10,6 +10,26 @@ from django.middleware.csrf import get_token
 from ..models.book import Book
 from ..serializers import BookSerializer, UserSerializer
 
+class AllBooks(generics.ListCreateAPIView):
+    def get(self, request):
+        """Index request"""
+        books = Book.objects.all()
+        # books = Book.objects.filter(owner=request.user.id)
+        data = BookSerializer(books, many=True).data
+        return Response(data)
+
+    serializer_class = BookSerializer
+
+class AllBooksDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes=(IsAuthenticated,)
+    def get(self, request, pk):
+        """Show request"""
+        book = get_object_or_404(Book, pk=pk)
+        data = BookSerializer(book).data
+        # if not request.user.id == data['owner']:
+        #     raise PermissionDenied('Unauthorized, you do not own this book.')
+        return Response(data)
+
 class Books(generics.ListCreateAPIView):
     permission_classes=(IsAuthenticated,)
     def get(self, request):
