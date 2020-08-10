@@ -1,4 +1,5 @@
 from django.db import models
+# from django_fields import DefaultStaticImageField
 
 from .user import User
 
@@ -7,8 +8,10 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     note = models.CharField(max_length=500)
     rating = models.CharField(max_length=100)
+    # rating = models.DecimalField(max_digits=5, decimal_places=2)
     onWishlist = models.BooleanField()
     onRead = models.BooleanField()
+    photo = models.ImageField(upload_to='books', default='books/defaultImage.jpg')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     owner = models.ForeignKey(
@@ -29,5 +32,6 @@ class Book(models.Model):
           'note': self.note,
           'rating': self.rating,
           'onWishlist': self.onWishlist,
-          'onRead': self.onRead
+          'onRead': self.onRead,
+          'photo': self.photo
         }
