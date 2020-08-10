@@ -88,7 +88,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',
+                # 'django.template.context_processors.media',
             ],
         },
     },
@@ -155,10 +155,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Changes the url to /media/photo-file-name.jpg
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
 
 # Where the folder for the uploaded photos to be located
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'the_bookworm_spot_api')
+# MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'the_bookworm_spot_api')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 

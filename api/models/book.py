@@ -11,7 +11,7 @@ class Book(models.Model):
     rating = models.DecimalField(max_digits=2, decimal_places=1)
     onWishlist = models.BooleanField()
     onRead = models.BooleanField()
-    photo = models.ImageField(upload_to='books', default='books/default_Image.jpg')
+    # photo = models.ImageField(upload_to='books', default='books/default-image.jpg')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     owner = models.ForeignKey(
@@ -22,6 +22,7 @@ class Book(models.Model):
     # Returns a sensical string representation of the data
     def __str__(self):
         return self.title
+        # return self.title + ":" + str(self.imagefile)
 
     # Before serializers we want dictionary representations of the data
     def as_dict(self):
@@ -33,5 +34,5 @@ class Book(models.Model):
           'rating': self.rating,
           'onWishlist': self.onWishlist,
           'onRead': self.onRead,
-          'photo': self.photo
+          # 'photo': self.photo
         }
