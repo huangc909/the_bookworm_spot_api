@@ -8,24 +8,27 @@ from django.contrib.auth import get_user, authenticate, login, logout
 from django.middleware.csrf import get_token
 
 from ..models.book import Book
-from ..serializers import BookSerializer, UserSerializer
+from ..serializers import BookSerializer, UserSerializer, AllBooksSerializer
 
-class AllBooks(generics.ListCreateAPIView):
+from django.views.generic import ListView
+
+class AllBooks(generics.ListAPIView):
+    permission_classes=()
     def get(self, request):
         """Index request"""
         books = Book.objects.all()
         # books = Book.objects.filter(owner=request.user.id)
-        data = BookSerializer(books, many=True).data
+        data = AllBooksSerializer(books, many=True).data
         return Response(data)
 
-    serializer_class = BookSerializer
+        # serializer_class = AllBooksSerializer
 
-class AllBooksDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes=(IsAuthenticated,)
+class AllBooksDetail(generics.RetrieveAPIView):
+    permission_classes=()
     def get(self, request, pk):
         """Show request"""
         book = get_object_or_404(Book, pk=pk)
-        data = BookSerializer(book).data
+        data = AllBooksSerializer(book).data
         # if not request.user.id == data['owner']:
         #     raise PermissionDenied('Unauthorized, you do not own this book.')
         return Response(data)

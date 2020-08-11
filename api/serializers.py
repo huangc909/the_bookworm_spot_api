@@ -10,6 +10,11 @@ class BookSerializer(serializers.ModelSerializer):
         model = Book
         fields = ('id', 'title', 'author', 'note', 'rating', 'onWishlist', 'onRead', 'owner')
 
+class AllBooksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Book
+        fields = '__all__'
+
 class MangoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mango

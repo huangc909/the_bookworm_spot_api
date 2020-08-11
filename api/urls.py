@@ -12,7 +12,7 @@ urlpatterns = [
     path('sign-out/', SignOut.as_view(), name='sign-out'),
     path('change-pw/', ChangePassword.as_view(), name='change-pw'),
     path('all-books/', AllBooks.as_view(), name='all-books'),
-    path('all-books-detail/', AllBooksDetail.as_view(), name='all-books-detail'),
+    path('all-books-detail/<int:pk>/', AllBooksDetail.as_view(), name='all-books-detail'),
     path('books/', Books.as_view(), name='books'),
     path('books/<int:pk>/', BookDetail.as_view(), name='book-detail')
 ]
