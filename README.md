@@ -2,9 +2,9 @@
 The BookWorm Spot app provides users a space to store their personal reading experience by being able to add books into the app, record a note for each book, and check off whether or not the book is on their wishlist and/or has been read already.
 
 ## Links
-- [API URL](https://git.heroku.com/the-bookworm-spot-api.git)
+- [Backend API URL](https://git.heroku.com/the-bookworm-spot-api.git)
 - [Deployed Application](https://huangc909.github.io/the_bookworm_spot/)
-- [Front End Repository](https://github.com/huangc909/the_bookworm_spot)
+- [Frontend Repository](https://github.com/huangc909/the_bookworm_spot)
 
 ## ERD
 ![The_BookWorm_Spot_ERD](https://media.git.generalassemb.ly/user/28180/files/b339ba00-d703-11ea-8aa4-21365d86c34a)
