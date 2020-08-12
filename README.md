@@ -2,9 +2,9 @@
 The BookWorm Spot app provides users a space to store their personal reading experience by being able to add books into the app, record a note for each book, and check off whether or not the book is on their wishlist and/or has been read already.
 
 ## Links
-- API URL:
-- Deployed Application:
-- Front End Repository:
+- [API URL] ()
+- [Deployed Application] ()
+- [Front End Repository] (https://github.com/huangc909/the_bookworm_spot)
 
 ## ERD
 ![The_BookWorm_Spot_ERD](https://media.git.generalassemb.ly/user/28180/files/b339ba00-d703-11ea-8aa4-21365d86c34a)
@@ -17,7 +17,9 @@ The BookWorm Spot app provides users a space to store their personal reading exp
 - Heroku
 
 ## Planning
+I decided to use Django and Python so that I can improve my skills using these technologies. I reviewed previous code, searched on Google, and consulted my software engineering community as I worked on the back-end portion.
 
+I completed the MVP features for CRUD before going onto the frontend. After I completed the front-end, I came back to the backend to add the feature of having any client come to the app and see the recently added books. Once completed, I went to work on the frontend.
 
 ## API Information
 ### Books
