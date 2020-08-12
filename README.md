@@ -3,7 +3,7 @@ The BookWorm Spot app provides users a space to store their personal reading exp
 
 ## Links
 - [API URL] ()
-- [Deployed Application] ()
+- [Deployed Application] (https://huangc909.github.io/the_bookworm_spot/)
 - [Front End Repository] (https://github.com/huangc909/the_bookworm_spot)
 
 ## ERD
